@@ -53,8 +53,13 @@ public class MotoristaTest {
 
     @Test
     void deveDefinirCategoria() {
-        //TODO Tarefa 4: testar categoria em pelo menos dois cenários
-        // (ex.: 4 corridas com 3 concluídas → PRATA; 4 com 4 concluídas → DIAMANTE)
+        assertEquals(Categoria.BRONZE, criar(4, 0).categoria);
+        assertEquals(Categoria.BRONZE, new Motorista("Vazio").categoria();
+        assertEquals(Categoria.BRONZE, criar(4, 2).categoria);
+        assertEquals(Categoria.PRATA, criar(4, 0).categoria);
+        assertEquals(Categoria.OURO, criar(4, 0).categoria);
+        assertEquals(Categoria.DIAMANTE, criar(4, 0).categoria);
+        
     }
 
     @Test

@@ -84,8 +84,18 @@ public class Motorista {
      * Lista vazia → BRONZE.
      */
     public Categoria categoria() {
-        //TODO Tarefa 2
-        return Categoria.BRONZE;
+        if(corridas.isEmpty()){
+            return Categoria.BRONZE;
+        }
+        int concluidas = 0;
+        for(Corrida c : corridas){
+            if(c.isConcluida()){ concluidas++;}
+
+            if(taxa <= 0.50) return Categoria.BRONZE;
+            if(taxa <= 0.75) return Categoria.PRATA;
+            if(taxa <= 0.90) return Categoria.OURO;
+            return Categoria.DIAMANTE;
+        }
     }
 
     /**
@@ -94,7 +104,11 @@ public class Motorista {
      */
     public double ganhoLiquido() {
         //TODO Tarefa 3
-        return 0.0;
+        double comissao = categoria().getcomissao();
+        if(kmRodados() > 500){
+            comissao = comissao/2;
+        }
+        return faturamentoBruto() * (1 - comissao);
     }
 
     public String resumo() {
